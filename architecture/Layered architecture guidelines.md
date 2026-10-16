@@ -18,10 +18,11 @@ graph v
     subgraph Business Layer
         Service--delegates database calls to-->Repository
         Service--delegates domain mapping to-->Mapper
-        Service--delegates REST calls to-->REST(Rest Client)
-        Service--delegates WEB calls to-->WEB(WEB Client)
-        Service--send messages to-->MQ(Message Queue)
-        Service--receive messages from-->MQ(Message Queue)
+        Service--delegates REST calls-->REST(Rest Client)
+        Service--delegates WEB calls-->WEB(WEB Client)
+        Service--send messages-->MQ(Message Queue)
+        Service--receive messages-->MQ(Message Queue)
+        Service--delegates-->Service
     end
     subgraph Presentation Layer
         subgraph Data Model
@@ -30,9 +31,10 @@ graph v
         end
         Controller--receives-->Request
         Controller--returns-->Response
-        Controller--delegates to-->Service
+        Controller--delegates-->Service
         Request--sent to-->Service
         Response--built by-->Service
     end
+    Client--calls-->Controller
 ```
 ---
