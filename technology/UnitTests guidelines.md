@@ -138,13 +138,13 @@ sequenceDiagram
     participant Method
     Test->>Mock1:builds
     Test->>Mock1:define behavior
-    Mock1->>Method:inject into
+    Test->>Method:inject into
     Test->>Mock2:builds
     Test->>Mock2:define behavior
-    Mock2->>Method:inject into
+    Test->>Method:inject into
     Test->>Method:calls
-    Method->>Mock1:calls
-    Method->>Mock2:calls
+    Method-->>Mock1:calls
+    Method-->>Mock2:calls
     Test->>Mock1:verify interaction
     Test->>Mock2:verify interaction
     
@@ -185,4 +185,24 @@ graph v
             Interaction--checks-->MCI--is compared with-->EMCI
         end
     end
+```
+---
+Simple test (Mock interaction with dynamic input) sequence
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Test
+    participant DI as Dynamic Argument
+    participant Mock
+    participant Method
+    Test->>DI:builds
+    Test->>Mock:builds
+    Test->>Mock:define behavior using Dynamic Argument
+    Test->>Method:inject Mock into
+    Test->>Method:calls
+    Method-->>Mock:calls
+    Mock-->>DI:uses
+    Test->>Mock:verify interaction
+    Test->>DI:verify content
+    
 ```
