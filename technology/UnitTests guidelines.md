@@ -26,6 +26,24 @@ graph v
     end
 ```
 ---
+Simple test (Input vs Output) sequence
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Expected Result
+    actor Test
+    participant Specific Input
+    participant Method
+    participant Actual Result
+    Test->>Specific Input:builds
+    Test->>Expected Result:builds
+    Test->>Method:calls
+    Method->>Actual Result:builds
+    Actual Result->>Test:is returned to
+    Test->>Expected Result:compares Actual Result with
+    
+```
+---
 Simple test (Input vs Exception)
 ```mermaid
 graph v
