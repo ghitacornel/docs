@@ -124,7 +124,7 @@ graph v
             Interaction
             Test--checks-->Interaction
             Interaction--checks-->Mock
-            MCI--is compared with-->EMCI
+            Interaction--checks-->MCI--is compared with-->EMCI
         end
     end
 ```
