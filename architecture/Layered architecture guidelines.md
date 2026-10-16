@@ -8,15 +8,20 @@ graph v
         subgraph Data Model
             Projection--derived from-->Entity
         end
+        subgraph Business
+            Repository
+        end
         Entity--maps-->DB
         Repository--manages-->Entity
         Repository--uses-->Projection
     end
     subgraph Business Layer
-        Service--uses-->Entity
         Service--delegates database calls to-->Repository
         Service--delegates domain mapping to-->Mapper
-        Mapper--maps-->Entity
+        Service--delegates REST calls to-->REST(Rest Client)
+        Service--delegates WEB calls to-->WEB(WEB Client)
+        Service--send messages to-->MQ(Message Queue)
+        Service--receive messages from-->MQ(Message Queue)
     end
     subgraph Presentation Layer
         subgraph Data Model
