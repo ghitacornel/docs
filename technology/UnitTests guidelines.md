@@ -86,7 +86,7 @@ sequenceDiagram
     Test->>Method:calls
     Method->>AE:throws
     AE->>Test:is returned to
-    Test->>EE:compared Actual Exception with
+    Test->>EE:compares Actual Exception with
     
 ```
 ---
