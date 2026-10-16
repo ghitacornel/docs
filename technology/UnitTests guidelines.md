@@ -30,17 +30,17 @@ Simple test (Input vs Output) sequence
 ```mermaid
 sequenceDiagram
     autonumber
-    participant Expected Result
+    participant ER as Expected Result
     actor Test
-    participant Specific Input
+    participant SI as Specific Input
     participant Method
-    participant Actual Result
-    Test->>Specific Input:builds
-    Test->>Expected Result:builds
+    participant AR as Actual Result
+    Test->>ER:builds
+    Test->>SI:builds
     Test->>Method:calls
-    Method->>Actual Result:builds
-    Actual Result->>Test:is returned to
-    Test->>Expected Result:compares Actual Result with
+    Method->>AR:builds
+    AR->>Test:is returned to
+    Test->>ER:compares Actual Result with
     
 ```
 ---
@@ -70,6 +70,24 @@ graph v
             AE--is compared with-->EE
         end
     end
+```
+---
+Simple test (Input vs Exception) sequence
+```mermaid
+sequenceDiagram
+    autonumber
+    participant EE as Expected Exception
+    actor Test
+    participant SI as Specific Input
+    participant Method
+    participant AE as Actual Exception
+    Test->>EE:builds
+    Test->>SI:builds
+    Test->>Method:calls
+    Method->>AE:throws
+    AE->>Test:is returned to
+    Test->>EE:compared Actual Exception with
+    
 ```
 ---
 Simple test (Mock interaction)
