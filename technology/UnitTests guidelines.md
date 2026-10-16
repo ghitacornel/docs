@@ -128,6 +128,28 @@ graph v
     end
 ```
 ---
+Simple test (Mock interaction) sequence
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Test
+    participant Mock1
+    participant Mock2
+    participant Method
+    Test->>Mock1:builds
+    Test->>Mock1:define behavior
+    Mock1->>Method:inject into
+    Test->>Mock2:builds
+    Test->>Mock2:define behavior
+    Mock2->>Method:inject into
+    Test->>Method:calls
+    Method->>Mock1:calls
+    Method->>Mock2:calls
+    Test->>Mock1:verify interaction
+    Test->>Mock2:verify interaction
+    
+```
+---
 Simple test (Mock interaction with dynamic input)
 ```mermaid
 graph v
