@@ -16,12 +16,15 @@ graph v
         Repository--uses-->Projection
     end
     subgraph Business Layer
+        MQ(Message Queue)
+        REST(Rest Client)
+        WEB(WEB Client)
         Service--delegates database calls to-->Repository
         Service--delegates domain mapping to-->Mapper
-        Service--delegates REST calls-->REST(Rest Client)
-        Service--delegates WEB calls-->WEB(WEB Client)
-        Service--send messages-->MQ(Message Queue)
-        Service--receive messages-->MQ(Message Queue)
+        Service--delegates REST calls-->REST
+        Service--delegates WEB calls-->WEB
+        Service--send messages-->MQ
+        Service--receive messages-->MQ
         Service--delegates-->Service
     end
     subgraph Presentation Layer
